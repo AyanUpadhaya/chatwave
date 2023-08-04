@@ -5,6 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 import { loginRoute } from "../utils/Routes";
 const Login = () => {
+    console.log(loginRoute)
     //state for form values
     const [values,setValues] = useState({
         username:'',
@@ -19,6 +20,7 @@ const Login = () => {
         theme:"dark"
     }
     //handle form submission
+   
     const handleSubmit = async(e) => {
         e.preventDefault();
         if(handleValidation()){
@@ -31,6 +33,7 @@ const Login = () => {
                 toast.error(data.msg,toastOptions);
             }
             if(data.status === true){
+
                 localStorage.setItem('app-user',JSON.stringify(data.user));
                 navigate('/');
             }
@@ -54,6 +57,7 @@ const Login = () => {
             toast.error('Username and Password Required',toastOptions);
             return false;
         }
+        return true;
     }
 
     return (
@@ -63,19 +67,19 @@ const Login = () => {
                 <div className="">
                     <form onSubmit={handleSubmit}>
                         <div className="form-outline">
-                            <input type="text" name="username" className="form-control" onChange={(e) => handleChange(e)} min="3" />
-                            <label className="form-label" htmlFor="form3Example1">Username</label>
+                            <input type="text" name="username" className="form-control" onChange={(e) => handleChange(e)} />
+                            <label className="form-label">Username</label>
                         </div>
 
                         <div className="form-outline mb-3">
                             <input type="password" name="password" className="form-control" onChange={(e) => handleChange(e)} />
-                            <label className="form-label" htmlFor="form3Example4">Password</label>
+                            <label className="form-label">Password</label>
                         </div>
 
                         <button type="submit" className="btn btn-primary btn-block mb-4">Login</button>
 
                         <div>
-                            <p> Don't Have an account? <Link to={'/register'}>Sign Up</Link></p>
+                            <p> Dont Have an account? <Link to={'/register'}>Sign Up</Link></p>
                         </div>
                     </form>
                     <ToastContainer/>
