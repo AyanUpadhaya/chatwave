@@ -18,7 +18,7 @@ const Contacts = ({ contacts, currentUser,chatChange }) => {
 
     const changeCurrentChat = (index, contact) => {
         setCurrentSelected(index);
-        chatChange(contact)
+        chatChange(contact);
     }
 
     const handleLogOut = ()=>{
@@ -34,6 +34,9 @@ const Contacts = ({ contacts, currentUser,chatChange }) => {
                     <div className="brand my-2 text-center">
                         <h4 className="logo text-light">ChatWave</h4>
                     </div>
+                    <div className="mx-2 my-4">
+                        <button className="btn btn-outline-light w-100">Create Chat Room</button>
+                    </div>
                     <div className="contacts">
                         {
                             contacts.map((contact, index) => {
@@ -46,7 +49,7 @@ const Contacts = ({ contacts, currentUser,chatChange }) => {
                                         </div>
 
                                         <div className="username">
-                                            <h3>{contact.username}</h3>
+                                            <h4>{contact.username}</h4>
                                         </div>
                                     </div>
                                 );

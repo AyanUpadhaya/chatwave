@@ -10,7 +10,7 @@ body{
     transition: 0.5s ease-in-out;
 }
 .avatar img{
-    height: 6rem;
+    height: 3rem;
 }
 .selected{
     border: 0.4rem solid #4e0eff;
@@ -30,11 +30,11 @@ body{
     align-items: center;
 }
 .chat-container-box{
-    height: 90vh;
-    width: 90vw;
+    height: 100vh;
+    width: 100vw;
     background-color: #131324;
     display: grid;
-    grid-template-columns: 25% 75%;
+    grid-template-columns: 25% 50% 25%;
 }
 
 /* contacts */
@@ -92,6 +92,28 @@ body{
 .chatbot-section img{
     height: 20rem;
 }
+
+.user-details{
+    display:flex;
+    align-items: center;
+}
+.user-details .avatar img{
+
+    height: 3rem;
+}
+/* button container */
+.emoji{
+    font-size: large;
+    margin-bottom: 1rem;
+    cursor: pointer;
+}
+
+/* messages */
+.messages{
+    height: 70vh;
+    background: #352f44; 
+}
+
 
 @media screen and (min-width:720px) and (max-width:1080px) {
     .chat-container-box{

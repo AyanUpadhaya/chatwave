@@ -5,6 +5,7 @@ import { allUsersRoute } from '../utils/Routes';
 import Contacts from '../components/Contacts';
 import Welcome from './Welcome';
 import ChatContainer from '../components/ChatContainer';
+import ChatRooms from '../components/ChatRooms';
 const Chat = () => {
     const navigate = useNavigate();
     const [contacts,setContacts] = useState([]);
@@ -44,8 +45,9 @@ const Chat = () => {
             <div className="chat-container-box">
                 <Contacts contacts={contacts} currentUser={currentUser} chatChange={handleChatChange}/>
                 {
-                    currentChat === undefined?<Welcome currentChat={currentChat}/>:<ChatContainer currentUser={currentUser}/>
+                    currentChat === undefined?<Welcome currentUser={currentUser} />:<ChatContainer  currentChat={currentChat}/>
                 }
+                <ChatRooms/>
             </div>
         </div>
     );

@@ -16,6 +16,7 @@ const server = http.createServer(app);
 app.use(bodyParser.json());
 app.use(cors());
 app.use('/api/auth',userRoutes)
+app.use('/api/messages',require("./routes/messagesRoutes"))
 
 
 //connecting to mongodb
