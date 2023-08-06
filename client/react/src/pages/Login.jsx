@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import {ToastContainer,toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -19,6 +19,14 @@ const Login = () => {
         draggable:true,
         theme:"dark"
     }
+
+    useEffect(()=>{
+        if(localStorage.getItem('app-user')){
+            navigate('/')
+        }
+    },[])
+
+
     //handle form submission
    
     const handleSubmit = async(e) => {
@@ -62,9 +70,9 @@ const Login = () => {
 
     return (
         <div className="bg-dark text-light">
-            <div className="container py-3">
+            <div className="container py-3 d-flex flex-column justify-content-center align-items-center gap-2">
                 <h3 className="my-3">Login</h3>
-                <div className="">
+                <div className="login-container">
                     <form onSubmit={handleSubmit}>
                         <div className="form-outline">
                             <input type="text" name="username" className="form-control" onChange={(e) => handleChange(e)} />
@@ -82,8 +90,9 @@ const Login = () => {
                             <p> Dont Have an account? <Link to={'/register'}>Sign Up</Link></p>
                         </div>
                     </form>
-                    <ToastContainer/>
+                    
                 </div>
+                <ToastContainer/>
             </div>
         </div>
     );

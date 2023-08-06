@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import {ToastContainer,toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -20,6 +20,11 @@ const Register = () => {
         draggable:true,
         theme:"dark"
     }
+    useEffect(()=>{
+        if(localStorage.getItem('app-user')){
+            navigate('/')
+        }
+    },[])
     //handle form submission
     const handleSubmit = async(e) => {
         e.preventDefault();
@@ -71,7 +76,7 @@ const Register = () => {
         <div className="bg-dark text-light">
             <div className="container py-3">
                 <h3 className="my-3">Register</h3>
-                <div className="">
+                <div className="reg_container">
                     <form onSubmit={handleSubmit}>
                         <div className="form-outline">
                             <input type="text" name="username" className="form-control" onChange={(e) => handleChange(e)} />

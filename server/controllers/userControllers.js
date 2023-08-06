@@ -42,20 +42,57 @@ const login = async (req, res, next) => {
     const {username,password} = req.body;
     const user = await User.findOne({username});
     if(!user){
-        return res.json({msg:"Incorrect username or password",status:false})
+        return res.json({msg:"Incorrect username or password",status:false});
     }
 
     //check password
-    const isPasswordAvailable = bcrypt.compare(password,user.password)
+    const isPasswordAvailable = await bcrypt.compare(password,user.password);
+    console.log(isPasswordAvailable);
 
     if(!isPasswordAvailable){
-        return res.json({msg:"Incorrect username or password",status:false})
+        return res.json({msg:"Incorrect username or password",status:false});
     }
     delete user.password;
     return res.json({ status: true, user })
 }
 
+const setAvatar = async(req,res,next)=>{
+    try{
+        const userId = req.params.id;
+        const avatarImage = req.body.image;
+        const userData = await User.findByIdAndUpdate(userId,{
+            isAvatarImageSet:true,
+            avatarImage,
+        })
+
+        return res.json({
+            isSet:userData.isAvatarImageSet,
+            image:userData.avatarImage
+        })
+    }catch(ex){
+        next(ex)
+    }
+
+}
+
+const allUsers = async (req,res,next)=>{
+    try{
+        const users = await User.find({_id:{$ne:req.params.id }}).select([
+            "email",
+            "username",
+            "avatarImage",
+            "_id",
+        ])
+        return res.json(users)
+    }catch(ex){
+        next(ex)
+    }
+}
+
+
 module.exports = {
     register,
-    login
+    login,
+    setAvatar,
+    allUsers
 }
