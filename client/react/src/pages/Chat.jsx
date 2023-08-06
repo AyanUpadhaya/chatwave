@@ -45,7 +45,7 @@ const Chat = () => {
             <div className="chat-container-box">
                 <Contacts contacts={contacts} currentUser={currentUser} chatChange={handleChatChange}/>
                 {
-                    currentChat === undefined?<Welcome currentUser={currentUser} />:<ChatContainer  currentChat={currentChat}/>
+                    currentChat === undefined?<Welcome currentUser={currentUser} />:<ChatContainer  currentChat={currentChat} currentUser={currentUser}/>
                 }
                 <ChatRooms/>
             </div>
