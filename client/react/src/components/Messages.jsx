@@ -1,11 +1,11 @@
 
-const Messages = ({messages}) => {
+const Messages = ({messages,scrollRef,uuidv4}) => {
     return (
         <div className="messages chat-messages">
         {
             messages.map((message,index)=>{
                 return(
-                    <div key={index}>
+                    <div ref={scrollRef} key={uuidv4()}>
                         <div className={`message ${message.fromSelf?"sended":"recieved"}`}>
                             <div className="content text-light">
                                 <p>

@@ -34,7 +34,7 @@ body{
     width: 100vw;
     background-color: #131324;
     display: grid;
-    grid-template-columns: 25% 50% 25%;
+    grid-template-columns: 25% 75%;
 }
 
 /* contacts */
@@ -129,7 +129,14 @@ body{
     flex-direction: column;
     gap: 1rem;
     overflow: auto;
-
+}
+.chat-messages::-webkit-scrollbar{
+    width: 0.2rem;
+}
+.chat-messages::-webkit-scrollbar-thumb{
+    background-color: #ffffff39;
+    width: 0.rem;
+    border-radius: 1rem;
 }
 .message{
     display: flex;
@@ -156,6 +163,15 @@ body{
 }
 
 
+/* chat rooms */
+.cursor-pointer{
+    cursor: pointer
+    ;
+}
+
+.selectedRoom{
+    background-color: #dbd8e3 !important;
+}
 
 @media screen and (min-width:720px) and (max-width:1080px) {
     .chat-container-box{

@@ -4,8 +4,13 @@ import {ToastContainer,toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 import { loginRoute } from "../utils/Routes";
+import { useDispatch } from "react-redux";
+import {login} from '../features/user'
+
 const Login = () => {
-    console.log(loginRoute)
+
+    const dispatch = useDispatch();
+
     //state for form values
     const [values,setValues] = useState({
         username:'',
@@ -43,6 +48,9 @@ const Login = () => {
             if(data.status === true){
 
                 localStorage.setItem('app-user',JSON.stringify(data.user));
+                const {username,email,avatarImage} = data.user
+                const payload = {username,email,avatarImage}
+                dispatch(login(payload))
                 navigate('/');
             }
         }
