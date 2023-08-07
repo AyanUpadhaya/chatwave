@@ -23,6 +23,8 @@ const Register = () => {
     useEffect(()=>{
         if(localStorage.getItem('app-user')){
             navigate('/')
+        }else{
+            document.title="Registration"
         }
     },[])
     //handle form submission
@@ -75,7 +77,7 @@ const Register = () => {
     return (
         <div className="bg-dark text-light">
             <div className="container py-3">
-                <h3 className="my-3">Register</h3>
+                <h3 className="my-3">ChatWave Register</h3>
                 <div className="reg_container">
                     <form onSubmit={handleSubmit}>
                         <div className="form-outline">

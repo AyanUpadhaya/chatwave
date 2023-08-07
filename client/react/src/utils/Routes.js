@@ -1,4 +1,6 @@
-export const host ="http://localhost:3000";
+// export const host ="http://localhost:3000";
+export const host ="https://chatapp-backend-gios.onrender.com";
+// export const host ="https://chatapp-server-liart.vercel.app";
 export const registerRoute = `${host}/api/auth/register`;
 export const loginRoute = `${host}/api/auth/login`;
 export const setAvatarRoute = `${host}/api/auth/setAvatar`;

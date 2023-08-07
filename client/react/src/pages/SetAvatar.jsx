@@ -24,6 +24,8 @@ const SetAvatar = () => {
     useEffect(()=>{
         if(!localStorage.getItem("app-user")){
             navigate('/login')
+        }else{
+            document.title="Set Avatar"
         }
     },[])
 

@@ -28,6 +28,8 @@ const Login = () => {
     useEffect(()=>{
         if(localStorage.getItem('app-user')){
             navigate('/')
+        }else{
+            document.title = "Login"
         }
     },[])
 
@@ -79,7 +81,7 @@ const Login = () => {
     return (
         <div className="bg-dark text-light">
             <div className="container py-3 d-flex flex-column justify-content-center align-items-center gap-2">
-                <h3 className="my-3">Login</h3>
+                <h3 className="my-3">ChatWave Login</h3>
                 <div className="login-container">
                     <form onSubmit={handleSubmit}>
                         <div className="form-outline">

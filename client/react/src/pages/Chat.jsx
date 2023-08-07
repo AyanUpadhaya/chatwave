@@ -18,6 +18,7 @@ const Chat = () => {
             navigate('/login');
         } else {
             setcurrentUser(JSON.parse(localStorage.getItem("app-user")))
+            document.title = "Chat"
         }
     }, []);
 
